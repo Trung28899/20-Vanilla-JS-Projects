@@ -42,6 +42,10 @@ function showData(data) {
         ${output}
     </ul>
   `;
+
+  if (data.prev || data.next) {
+    more.innerHTML = ``;
+  }
 }
 
 form.addEventListener("submit", (e) => {
