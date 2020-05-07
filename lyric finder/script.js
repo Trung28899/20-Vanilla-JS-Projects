@@ -46,28 +46,46 @@ function showData(data) {
   if (data.prev || data.next) {
     // See the data in the console > will see the prev and next field in JSON
     more.innerHTML = `
-      ${data.prev ? `<button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>` : ``}
-      ${data.next ? `<button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>` : ``}
+      ${
+        data.prev
+          ? `<button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>`
+          : ``
+      }
+      ${
+        data.next
+          ? `<button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>`
+          : ``
+      }
     `;
-    console.log('next data: ' + data.next); 
+    console.log("next data: " + data.next);
   } else {
-    more.innerHTML = ''; s
+    more.innerHTML = "";
+    s;
   }
 }
 
-// Get prev / next result 
-async function getMoreSongs(url){
-  // Fetching data by await way:
+// Get prev / next result
+async function getMoreSongs(url) {
   // Add heroku cor anywhere proxy before the url
-  const result = await fetch(`https://api.allorigins.win/raw?url=${url}`);
+  const result = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
   const data = await result.json();
+
   // See the data JSON for reference
-  console.log("Prev / Next Page is: ");
-  console.log(data);
+  // console.log("Prev / Next Page is: ");
+  // console.log(data);
 
   showData(data);
 }
 
+// Get lyrics for song
+async function getLyrics(artist, songtitle) {
+  const result = await fetch(`${apiURL}/v1/${artist}/${songtitle}`);
+  const data = await result.json();
+
+  console.log(data);
+}
+
+// Form event listener
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -77,5 +95,19 @@ form.addEventListener("submit", (e) => {
     alert("Please Enter Artist Or Song Name");
   } else {
     searchSongs(searchTerm);
+  }
+});
+
+// Get lyrics button click
+result.addEventListener("click", (e) => {
+  // getting the button element that is clicked
+  const clickEl = e.target;
+  // console.log(clickEl);
+
+  if (clickEl.tagName === "BUTTON") {
+    const artist = clickEl.getAttribute("data-artist");
+    const songtitle = clickEl.getAttribute("data-songtitle");
+
+    getLyrics(artist, songtitle);
   }
 });
