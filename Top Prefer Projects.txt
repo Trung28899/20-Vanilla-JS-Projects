@@ -1,0 +1,30 @@
+Top Favorite:
+
+1. Lyric Search
+2. Meal Finder
+3. Memory Cards
+4. Expense Tracker
+5. Music Player
+
+Find Interesting: 
+6. Speech Text Reader
+7. New Year CountDown
+8. Relaxer App
+9. Sortable List
+10. Typing Game
+11. Infinite Scroll Blog
+12. movie seat booking
+
+Game: 
+13. Break out Game
+14. Hang man game
+
+Good for development: 
+15. Speak Number Guess
+16. Custom Video Player
+17. Exchange Rate
+18. Form Validator
+19. modal menu slider
+
+Find useless: 
+20. Dom array Methods
