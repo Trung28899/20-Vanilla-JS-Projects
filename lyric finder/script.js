@@ -44,8 +44,28 @@ function showData(data) {
   `;
 
   if (data.prev || data.next) {
-    more.innerHTML = ``;
+    // See the data in the console > will see the prev and next field in JSON
+    more.innerHTML = `
+      ${data.prev ? `<button class="btn" onclick="getMoreSongs('${data.prev}')">Prev</button>` : ``}
+      ${data.next ? `<button class="btn" onclick="getMoreSongs('${data.next}')">Next</button>` : ``}
+    `;
+    console.log('next data: ' + data.next); 
+  } else {
+    more.innerHTML = ''; s
   }
+}
+
+// Get prev / next result 
+async function getMoreSongs(url){
+  // Fetching data by await way:
+  // Add heroku cor anywhere proxy before the url
+  const result = await fetch(`https://api.allorigins.win/raw?url=${url}`);
+  const data = await result.json();
+  // See the data JSON for reference
+  console.log("Prev / Next Page is: ");
+  console.log(data);
+
+  showData(data);
 }
 
 form.addEventListener("submit", (e) => {
