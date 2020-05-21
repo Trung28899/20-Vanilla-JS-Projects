@@ -26,7 +26,8 @@ to fetch lyrics from api, then call getLyrics
 format the lyrics and create new html tags for 
 displaying the lyrics
 
-2. Interesting Trick should learn from This project: 
+2. Interesting Trick should learn from This project:
+ 
 - Event listener check for valid input then 
 proceed to next operation by calling a new function
 
